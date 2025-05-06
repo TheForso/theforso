@@ -1,127 +1,143 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arte 3D para Videojuegos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slideshow de Video - Portfolio</title>
   <style>
-    body {
-      margin: 0;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      overflow: hidden;
     }
 
-    header {
-      background: linear-gradient(to right, #111, #333);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    header h1 {
-      font-size: 2.5em;
-      margin: 0 0 10px;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin: 0;
-    }
-
-    nav {
-      background-color: #222;
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .portfolio img {
+    .slideshow {
+      position: relative;
+      height: 100vh;
       width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-      margin: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
     }
 
-    .contacto {
+    .slideshow video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .slideshow video.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
       text-align: center;
+      z-index: 2;
     }
 
-    .botones a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      background-color: #0078D7;
+    .controls button {
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
       color: white;
-      border-radius: 6px;
-      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      cursor: pointer;
+      border-radius: 5px;
       transition: background-color 0.3s;
     }
 
-    .botones a:hover {
-      background-color: #005fa3;
+    .controls button:hover {
+      background-color: rgba(0, 0, 0, 0.9);
     }
 
-    footer {
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
       text-align: center;
-      font-size: 0.9em;
-      padding: 20px;
-      background-color: #ddd;
+      z-index: 2;
+      background-color: rgba(0,0,0,0.4);
+      padding: 20px 30px;
+      border-radius: 10px;
+    }
+
+    .overlay-text h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .overlay-text p {
+      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
 
-  <header id="inicio">
-    <h1>Juan Pérez - Arte 3D para Videojuegos</h1>
-    <p>Modelado, texturizado y animación para proyectos indie y profesionales</p>
-  </header>
+  <div class="slideshow">
+    <!-- VIDEO 1 -->
+    <video class="active" autoplay muted loop>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
 
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#trabajos">Trabajos</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+    <!-- VIDEO 2 -->
+    <video muted loop>
+      <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+    </video>
 
-  <section id="trabajos" class="portfolio">
-    <h2>Portafolio</h2>
-    <p>Aquí algunos de mis trabajos más recientes:</p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-      <img src="https://via.placeholder.com/400x300?text=Modelo+1" alt="Trabajo 1">
-      <img src="https://via.placeholder.com/400x300?text=Modelo+2" alt="Trabajo 2">
-      <img src="https://via.placeholder.com/400x300?text=Modelo+3" alt="Trabajo 3">
+    <!-- VIDEO 3 -->
+    <video muted loop>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay-text">
+      <h1>Arte 3D para Videojuegos</h1>
+      <p>Modelado · Texturas · Animación</p>
     </div>
-  </section>
 
-  <section id="contacto" class="contacto">
-    <h2>Sobre mí y contacto</h2>
-    <p>Soy un artista 3D con experiencia en proyectos para PC y móviles. Trabajo con Blender, Substance, Unreal y Unity.</p>
-    <p>Estoy disponible para trabajos freelance o colaboraciones.</p>
-
-    <div class="botones">
-      <a href="mailto:juanperez@email.com">Enviar correo</a>
-      <a href="https://www.artstation.com/" target="_blank">Ver ArtStation</a>
-      <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+    <div class="controls">
+      <button onclick="prevSlide()">◀ Anterior</button>
+      <button onclick="nextSlide()">Siguiente ▶</button>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    &copy; 2025 Juan Pérez. Todos los derechos reservados.
-  </footer>
+  <script>
+    const videos = document.querySelectorAll('.slideshow video');
+    let current = 0;
+
+    function showSlide(index) {
+      videos[current].classList.remove('active');
+      videos[current].pause();
+      current = (index + videos.length) % videos.length;
+      videos[current].classList.add('active');
+      videos[current].currentTime = 0;
+      videos[current].play();
+    }
+
+    function nextSlide() {
+      showSlide(current + 1);
+    }
+
+    function prevSlide() {
+      showSlide(current - 1);
+    }
+
+    // Auto-avance cada 10 segundos
+    setInterval(() => {
+      nextSlide();
+    }, 10000);
+  </script>
 
 </body>
 </html>
-
