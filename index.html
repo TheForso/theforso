@@ -141,6 +141,29 @@
     button[type="submit"]:hover {
       background-color: #555;
     }
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparente */
+  padding: 30px 40px;
+  border-radius: 15px;
+  z-index: 2;
+  text-align: center;
+  max-width: 90%;
+}
+
+.overlay-text h2 {
+  color: white;
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -158,7 +181,11 @@
     <video muted loop>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
     </video>
-
+  
+  <div class="overlay-text">
+    <h2>3D Graphics &nbsp;·&nbsp; VFX &nbsp;·&nbsp; Videogame Art &nbsp;·&nbsp; Cinematics</h2>
+  </div>
+    
     <header>
       <h1>3D Art for Video Games</h1>
       <nav>
