@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>3DMocracy</title>
+  <title>3D Art for Video Games</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
@@ -12,7 +12,6 @@
       scroll-behavior: smooth;
     }
 
-    /* SLIDESHOW */
     .slideshow {
       position: relative;
       height: 100vh;
@@ -37,7 +36,6 @@
       z-index: 1;
     }
 
-    /* HEADER */
     header {
       position: absolute;
       top: 0;
@@ -74,7 +72,6 @@
       color: #ffd700;
     }
 
-    /* CONTROLES */
     .controls {
       position: absolute;
       bottom: 20px;
@@ -99,7 +96,6 @@
       background-color: rgba(0, 0, 0, 0.9);
     }
 
-    /* SECCIONES */
     section {
       padding: 80px 20px;
       text-align: center;
@@ -117,14 +113,40 @@
       line-height: 1.6;
       color: #333;
     }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: 30px auto 0;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #555;
+    }
   </style>
 </head>
 <body>
 
-  <!-- SLIDESHOW DE VIDEOS -->
   <div class="slideshow">
 
-    <!-- Videos de ejemplo, podés cambiarlos por los tuyos -->
     <video class="active" autoplay muted loop>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
     </video>
@@ -137,39 +159,45 @@
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
     </video>
 
-    <!-- Encabezado con menú -->
     <header>
-      <h1>3DMocracy</h1>
+      <h1>3D Art for Video Games</h1>
       <nav>
         <ul class="menu">
           <li><a href="#who">Who We Are</a></li>
           <li><a href="#what">What We Do</a></li>
-          <li><a href="#contact">Let’s Talk</a></li>
+          <li><a href="#contact">Let's Talk</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Botones de navegación -->
     <div class="controls">
-      <button onclick="prevSlide()">◀ Anterior</button>
-      <button onclick="nextSlide()">Siguiente ▶</button>
+      <button onclick="prevSlide()">◀ Previous</button>
+      <button onclick="nextSlide()">Next ▶</button>
     </div>
   </div>
 
-  <!-- Secciones de contenido -->
   <section id="who">
     <h2>Who We Are</h2>
-    <p>Somos un pequeño estudio independiente especializado en arte digital para videojuegos. Creamos mundos, personajes y estilos visuales que conectan con los jugadores.</p>
+    <p>We are an independent studio focused on digital art for video games. We create characters, worlds, and visual styles that engage players and bring stories to life.</p>
   </section>
 
   <section id="what">
     <h2>What We Do</h2>
-    <p>Ofrecemos modelado 3D, texturizado, animación y diseño visual para videojuegos. Nos enfocamos en estilos estilizados, low poly, pixel art y realismo estilizado.</p>
+    <p>We offer 3D modeling, texturing, animation, and visual design tailored to games. We specialize in stylized, low poly, pixel art, and painterly aesthetics.</p>
   </section>
 
   <section id="contact">
-    <h2>Let’s Talk</h2>
-    <p>¿Tenés un proyecto en mente o querés colaborar? Escribinos a <strong>tucorreo@ejemplo.com</strong> o envianos un mensaje a través de nuestras redes sociales.</p>
+    <h2>Let's Talk</h2>
+    <p>Have a project in mind or want to collaborate? Send us a message and we’ll get back to you shortly.</p>
+
+    <form action="https://formsubmit.co/your_hidden_address" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Your message..." required></textarea>
+
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
   <script>
@@ -193,7 +221,6 @@
       showSlide(current - 1);
     }
 
-    // Cambio automático cada 10 segundos
     setInterval(() => {
       nextSlide();
     }, 10000);
