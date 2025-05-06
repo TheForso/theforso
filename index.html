@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Forso - Home </title>
+  <title>Slideshow de Video - Portfolio</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
@@ -36,6 +36,25 @@
       z-index: 1;
     }
 
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 20px 30px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
     .controls {
       position: absolute;
       bottom: 20px;
@@ -59,33 +78,12 @@
     .controls button:hover {
       background-color: rgba(0, 0, 0, 0.9);
     }
-
-    .overlay-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      text-align: center;
-      z-index: 2;
-      background-color: rgba(0,0,0,0.4);
-      padding: 20px 30px;
-      border-radius: 10px;
-    }
-
-    .overlay-text h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    .overlay-text p {
-      font-size: 1.2em;
-    }
   </style>
 </head>
 <body>
 
   <div class="slideshow">
+
     <!-- VIDEO 1 -->
     <video class="active" autoplay muted loop>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
@@ -101,10 +99,9 @@
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
     </video>
 
-    <div class="overlay-text">
-      <h1>Welcome to The Forso</h1>
-      <p>3d Graphics · Videgame Art · VFX · Cinematics </p>
-    </div>
+    <header>
+      <h1>Arte 3D para Videojuegos</h1>
+    </header>
 
     <div class="controls">
       <button onclick="prevSlide()">◀ Anterior</button>
@@ -133,7 +130,7 @@
       showSlide(current - 1);
     }
 
-    // Auto-avance cada 10 segundos
+    // Auto cambio cada 10 segundos
     setInterval(() => {
       nextSlide();
     }, 10000);
