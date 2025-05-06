@@ -2,78 +2,126 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Página de Prueba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arte 3D para Videojuegos</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
       margin: 0;
-      padding: 0;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
     }
 
     header {
-      background-color: #333;
+      background: linear-gradient(to right, #111, #333);
       color: white;
-      padding: 20px 0;
+      text-align: center;
+      padding: 60px 20px;
     }
 
-    h1 {
+    header h1 {
+      font-size: 2.5em;
+      margin: 0 0 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
       margin: 0;
-      font-size: 2em;
     }
 
-    .perfil {
-      margin-top: 30px;
+    nav {
+      background-color: #222;
+      text-align: center;
+      padding: 10px 0;
     }
 
-    .perfil img {
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    .redes {
-      margin: 30px 0;
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    .redes a {
+    .portfolio img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .contacto {
+      text-align: center;
+    }
+
+    .botones a {
       display: inline-block;
       margin: 10px;
-      padding: 10px 20px;
-      background-color: #0066cc;
+      padding: 12px 20px;
+      background-color: #0078D7;
       color: white;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       transition: background-color 0.3s;
     }
 
-    .redes a:hover {
-      background-color: #004d99;
+    .botones a:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      padding: 20px;
+      background-color: #ddd;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Welcome to The Forso </h1>
-    <p>Bienvenido a mi página web personal</p>
+  <header id="inicio">
+    <h1>Juan Pérez - Arte 3D para Videojuegos</h1>
+    <p>Modelado, texturizado y animación para proyectos indie y profesionales</p>
   </header>
 
-  <div class="perfil">
-    <!-- Podés reemplazar la URL por la tuya -->
-    <img src="https://via.placeholder.com/150" alt="Mi Foto de Perfil">
-  </div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#trabajos">Trabajos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 
-  <div class="redes">
-    <a href="https://github.com/TuUsuario" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/TuPerfil" target="_blank">LinkedIn</a>
-    <a href="mailto:tuemail@example.com">Contacto</a>
-  </div>
+  <section id="trabajos" class="portfolio">
+    <h2>Portafolio</h2>
+    <p>Aquí algunos de mis trabajos más recientes:</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <img src="https://via.placeholder.com/400x300?text=Modelo+1" alt="Trabajo 1">
+      <img src="https://via.placeholder.com/400x300?text=Modelo+2" alt="Trabajo 2">
+      <img src="https://via.placeholder.com/400x300?text=Modelo+3" alt="Trabajo 3">
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <h2>Sobre mí y contacto</h2>
+    <p>Soy un artista 3D con experiencia en proyectos para PC y móviles. Trabajo con Blender, Substance, Unreal y Unity.</p>
+    <p>Estoy disponible para trabajos freelance o colaboraciones.</p>
+
+    <div class="botones">
+      <a href="mailto:juanperez@email.com">Enviar correo</a>
+      <a href="https://www.artstation.com/" target="_blank">Ver ArtStation</a>
+      <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Juan Pérez. Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
+
