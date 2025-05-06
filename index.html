@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Slideshow de Video - Portfolio</title>
+  <title>Arte 3D para Videojuegos</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
+      scroll-behavior: smooth;
     }
 
+    /* SLIDESHOW */
     .slideshow {
       position: relative;
       height: 100vh;
@@ -36,6 +37,7 @@
       z-index: 1;
     }
 
+    /* HEADER */
     header {
       position: absolute;
       top: 0;
@@ -55,6 +57,24 @@
       margin: 0;
     }
 
+    nav .menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav .menu li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav .menu li a:hover {
+      color: #ffd700;
+    }
+
+    /* CONTROLES */
     .controls {
       position: absolute;
       bottom: 20px;
@@ -78,36 +98,79 @@
     .controls button:hover {
       background-color: rgba(0, 0, 0, 0.9);
     }
+
+    /* SECCIONES */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #333;
+    }
   </style>
 </head>
 <body>
 
+  <!-- SLIDESHOW DE VIDEOS -->
   <div class="slideshow">
 
-    <!-- VIDEO 1 -->
+    <!-- Videos de ejemplo, podés cambiarlos por los tuyos -->
     <video class="active" autoplay muted loop>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
     </video>
 
-    <!-- VIDEO 2 -->
     <video muted loop>
       <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
     </video>
 
-    <!-- VIDEO 3 -->
     <video muted loop>
       <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
     </video>
 
+    <!-- Encabezado con menú -->
     <header>
       <h1>Arte 3D para Videojuegos</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="#who">Who We Are</a></li>
+          <li><a href="#what">What We Do</a></li>
+          <li><a href="#contact">Let’s Talk</a></li>
+        </ul>
+      </nav>
     </header>
 
+    <!-- Botones de navegación -->
     <div class="controls">
       <button onclick="prevSlide()">◀ Anterior</button>
       <button onclick="nextSlide()">Siguiente ▶</button>
     </div>
   </div>
+
+  <!-- Secciones de contenido -->
+  <section id="who">
+    <h2>Who We Are</h2>
+    <p>Somos un pequeño estudio independiente especializado en arte digital para videojuegos. Creamos mundos, personajes y estilos visuales que conectan con los jugadores.</p>
+  </section>
+
+  <section id="what">
+    <h2>What We Do</h2>
+    <p>Ofrecemos modelado 3D, texturizado, animación y diseño visual para videojuegos. Nos enfocamos en estilos estilizados, low poly, pixel art y realismo estilizado.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Let’s Talk</h2>
+    <p>¿Tenés un proyecto en mente o querés colaborar? Escribinos a <strong>tucorreo@ejemplo.com</strong> o envianos un mensaje a través de nuestras redes sociales.</p>
+  </section>
 
   <script>
     const videos = document.querySelectorAll('.slideshow video');
@@ -130,7 +193,7 @@
       showSlide(current - 1);
     }
 
-    // Auto cambio cada 10 segundos
+    // Cambio automático cada 10 segundos
     setInterval(() => {
       nextSlide();
     }, 10000);
