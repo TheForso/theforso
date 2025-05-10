@@ -2,20 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to The Forso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Art for Video Games</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: Arial, sans-serif;
       height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background-image: url('banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 200px;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: white;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .slideshow {
       position: relative;
       height: 100vh;
-      width: 100%;
       overflow: hidden;
     }
 
@@ -23,8 +61,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 100%;
+      min-width: 100%;
+      min-height: 100%;
       object-fit: cover;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -36,156 +74,67 @@
       z-index: 1;
     }
 
-    header {
+    .overlay-text {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      padding: 20px 30px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 40px;
+      border-radius: 15px;
       z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    header h1 {
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    nav .menu {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav .menu li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav .menu li a:hover {
-      color: #ffd700;
-    }
-
-    .controls {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
       text-align: center;
-      z-index: 2;
+      max-width: 90%;
+      transition: opacity 0.5s ease-in-out;
     }
 
-    .controls button {
-      background-color: rgba(0, 0, 0, 0.6);
-      border: none;
+    .overlay-text.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .overlay-text h2 {
       color: white;
-      font-size: 18px;
-      padding: 10px 20px;
-      margin: 0 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+      font-size: 2em;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
-    .controls button:hover {
-      background-color: rgba(0, 0, 0, 0.9);
+    main {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f7f7f7;
     }
 
     section {
-      padding: 80px 20px;
-      text-align: center;
+      margin-bottom: 60px;
     }
 
     section h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      font-size: 28px;
+      color: #222;
     }
 
     section p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1em;
+      font-size: 18px;
       line-height: 1.6;
       color: #333;
     }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 400px;
-      margin: 30px auto 0;
-    }
-
-    input, textarea {
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button[type="submit"] {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #555;
-    }
-
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparente */
-  padding: 30px 40px;
-  border-radius: 15px;
-  z-index: 2;
-  text-align: center;
-  max-width: 90%;
-}
-
-.overlay-text h2 {
-  color: white;
-  font-size: 2em;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-
-    
   </style>
 </head>
 <body>
 
   <div class="slideshow">
+    <video src="video1.mp4" autoplay muted loop class="active"></video>
+    <video src="video2.mp4" autoplay muted loop></video>
+    <video src="video3.mp4" autoplay muted loop></video>
 
-    <video class="active" autoplay muted loop>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    </video>
+    <div class="overlay-text">
+      <h2>3D Graphics · VFX · Videogame Art · Cinematics</h2>
+    </div>
 
-    <video muted loop>
-      <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-    </video>
-
-    <video muted loop>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    </video>
-  
-  <div class="overlay-text">
-    <h2>3D Graphics &nbsp;·&nbsp; VFX &nbsp;·&nbsp; Videogame Art &nbsp;·&nbsp; Cinematics</h2>
-  </div>
-    
     <header>
       <h1>3D Art for Video Games</h1>
       <nav>
@@ -196,61 +145,45 @@
         </ul>
       </nav>
     </header>
-
-    <div class="controls">
-      <button onclick="prevSlide()">◀ Previous</button>
-      <button onclick="nextSlide()">Next ▶</button>
-    </div>
   </div>
 
-  <section id="who">
-    <h2>Who We Are</h2>
-    <p>We are an independent studio focused on digital art for video games. We create characters, worlds, and visual styles that engage players and bring stories to life.</p>
-  </section>
+  <main>
+    <section id="who">
+      <h2>Who We Are</h2>
+      <p>We are a team of artists and creators passionate about crafting stunning visuals for the video game industry. From concept to final render, we blend creativity and technical skill.</p>
+    </section>
 
-  <section id="what">
-    <h2>What We Do</h2>
-    <p>We offer 3D modeling, texturing, animation, and visual design tailored to games. We specialize in stylized, low poly, pixel art, and painterly aesthetics.</p>
-  </section>
+    <section id="what">
+      <h2>What We Do</h2>
+      <p>We specialize in 3D modeling, visual effects, cinematic sequences, and high-quality assets for real-time engines. Our work adapts to indie and AAA-scale productions.</p>
+    </section>
 
-  <section id="contact">
-    <h2>Let's Talk</h2>
-    <p>Have a project in mind or want to collaborate? Send us a message and we’ll get back to you shortly.</p>
-
-    <form action="https://formsubmit.co/5ce251c0240a9e0ace2564f44cf43c53" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" placeholder="Your message..." required></textarea>
-
-      <input type="hidden" name="_captcha" value="false">
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <section id="contact">
+      <h2>Let's Talk</h2>
+      <p>If you're interested in working together or have questions, feel free to reach out via our contact form (coming soon).</p>
+    </section>
+  </main>
 
   <script>
+    // Slideshow logic
     const videos = document.querySelectorAll('.slideshow video');
     let current = 0;
 
-    function showSlide(index) {
-      videos[current].classList.remove('active');
-      videos[current].pause();
-      current = (index + videos.length) % videos.length;
-      videos[current].classList.add('active');
-      videos[current].currentTime = 0;
-      videos[current].play();
-    }
-
-    function nextSlide() {
-      showSlide(current + 1);
-    }
-
-    function prevSlide() {
-      showSlide(current - 1);
-    }
-
     setInterval(() => {
-      nextSlide();
-    }, 10000);
+      videos[current].classList.remove('active');
+      current = (current + 1) % videos.length;
+      videos[current].classList.add('active');
+    }, 8000);
+
+    // Overlay text scroll behavior
+    const overlayText = document.querySelector('.overlay-text');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        overlayText.classList.add('hidden');
+      } else {
+        overlayText.classList.remove('hidden');
+      }
+    });
   </script>
 
 </body>
