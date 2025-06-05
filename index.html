@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Header Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Forso</title>
   <style>
     * {
       margin: 0;
@@ -11,13 +11,19 @@
       box-sizing: border-box;
     }
 
-    body {
-      background-color: #111;
+    body, html {
       font-family: Arial, sans-serif;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: black;
     }
 
-    header {
+    /* HEADER */
+    .banner {
+      position: relative;
       width: 100%;
+      max-width: 1920px;
+      margin: auto;
     }
 
     .banner-top {
@@ -26,39 +32,121 @@
       background-size: cover;
       background-position: top center;
       display: flex;
-      align-items: flex-end;
       justify-content: flex-end;
-      padding-right: 40px;
+      align-items: flex-end; /* ALINEA EL MENU ABAJO */
+      padding: 0 40px 10px 0;
     }
 
-    .banner-stripes {
-      height: 40px;
+    .banner-bottom {
+      height: 80px;
       background-image: url('StripesBanner.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: top center;
     }
 
-    .menu {
+    nav .menu {
       list-style: none;
       display: flex;
       gap: 20px;
     }
 
-    .menu li a {
+    nav .menu a {
       color: white;
       text-decoration: none;
+      font-weight: normal;
       font-size: 16px;
-      font-weight: 500;
-      transition: color 0.3s ease;
     }
 
-    .menu li a:hover {
-      color: #ffcc00;
+    /* VIDEO SLIDESHOW */
+    .slideshow {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slideshow video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+
+    .slideshow video.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0);
+      padding: 30px 40px;
+      border-radius: 15px;
+      z-index: 2;
+      text-align: center;
+      max-width: 90%;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .overlay-text.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .overlay-text h2 {
+      color: #edc447;
+      font-size: 3em;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    main {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f7f7f7;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      margin-bottom: 15px;
+      font-size: 28px;
+      color: #edc447;
+    }
+
+    section p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- Video slideshow -->
+  <div class="slideshow">
+    <video src="video1.mp4" autoplay muted loop class="active"></video>
+    <video src="video2.mp4" autoplay muted loop></video>
+    <video src="video3.mp4" autoplay muted loop></video>
+
+    <!-- Overlay text -->
+    <div class="overlay-text">
+      <h2>3D GRAPHICS · VFX · VIDEOGAME ART · CINEMATICS</h2>
+    </div>
+  </div>
+
+  <!-- Header with banners -->
+  <div class="banner">
     <div class="banner-top">
       <nav>
         <ul class="menu">
@@ -68,7 +156,48 @@
         </ul>
       </nav>
     </div>
-    <div class="banner-stripes"></div>
-  </header>
+    <div class="banner-bottom"></div>
+  </div>
+
+  <!-- Main content -->
+  <main>
+    <section id="who">
+      <h2>Who We Are</h2>
+      <p>We are a team of artists and creators passionate about crafting stunning visuals for the video game industry. From concept to final render, we blend creativity and technical skill.</p>
+    </section>
+
+    <section id="what">
+      <h2>What We Do</h2>
+      <p>We specialize in 3D modeling, visual effects, cinematic sequences, and high-quality assets for real-time engines. Our work adapts to indie and AAA-scale productions.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Let's Talk</h2>
+      <p>If you're interested in working together or have questions, feel free to reach out via our contact form (coming soon).</p>
+    </section>
+  </main>
+
+  <script>
+    // Slideshow logic
+    const videos = document.querySelectorAll('.slideshow video');
+    let current = 0;
+
+    setInterval(() => {
+      videos[current].classList.remove('active');
+      current = (current + 1) % videos.length;
+      videos[current].classList.add('active');
+    }, 8000);
+
+    // Overlay text scroll behavior
+    const overlayText = document.querySelector('.overlay-text');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        overlayText.classList.add('hidden');
+      } else {
+        overlayText.classList.remove('hidden');
+      }
+    });
+  </script>
+
 </body>
 </html>
