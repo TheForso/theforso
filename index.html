@@ -15,56 +15,46 @@
       font-family: Arial, sans-serif;
       height: 100%;
       overflow-x: hidden;
-      background-color: black;
-      padding-top: 160px; /* Igual a la altura del header */
+      background-color: #000;
+      padding-top: 160px; /* espacio para header fijo */
     }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 160px; /* Ajustá según cuánto gris quieras mostrar */
-  background-image: url('TopBanner_D.jpg');
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: flex-end; /* baja el contenido a la base del gris */
-  justify-content: flex-end; /* alinea el menú a la derecha */
-  padding: 0 40px 30px; /* espacio inferior para dejar aire sobre la franja */
-  z-index: 10;
-}
-
-    .menu-bar {
-      position: relative;
+    header {
+      position: fixed;
+      top: 0;
       width: 100%;
-      height: 60px;
-      overflow: hidden;
+      z-index: 10;
     }
 
-    .menu-bar img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
+    .banner-top {
+      height: 120px;
+      background-image: url('TopBanner_E.jpg');
+      background-size: cover;
+      background-position: top center;
     }
 
-    nav.menu {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .banner-stripes {
+      height: 40px;
+      background-image: url('StripesBanner.jpg');
+      background-size: cover;
+      background-position: center;
       display: flex;
-      gap: 40px;
-      z-index: 1;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 40px;
     }
 
-    nav.menu a {
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
+      font-weight: normal;
+      font-size: 16px;
     }
 
     .slideshow {
@@ -142,7 +132,19 @@ header {
 </head>
 <body>
 
-  <!-- Slideshow videos -->
+  <header>
+    <div class="banner-top"></div>
+    <div class="banner-stripes">
+      <nav>
+        <ul class="menu">
+          <li><a href="#who">Who We Are</a></li>
+          <li><a href="#what">What We Do</a></li>
+          <li><a href="#contact">Let's Talk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <div class="slideshow">
     <video src="video1.mp4" autoplay muted loop class="active"></video>
     <video src="video2.mp4" autoplay muted loop></video>
@@ -151,22 +153,8 @@ header {
     <div class="overlay-text">
       <h2>3D GRAPHICS · VFX · VIDEOGAME ART · CINEMATICS</h2>
     </div>
-
-    <!-- Header con fondo metálico -->
-    <header></header>
-
-    <!-- Menú sobre la franja -->
-    <div class="menu-bar">
-      <img src="StripesBanner.jpg" alt="Stripes Background">
-      <nav class="menu">
-        <a href="#who">Who We Are</a>
-        <a href="#what">What We Do</a>
-        <a href="#contact">Let's Talk</a>
-      </nav>
-    </div>
   </div>
 
-  <!-- Contenido principal -->
   <main>
     <section id="who">
       <h2>Who We Are</h2>
@@ -198,7 +186,11 @@ header {
     // Overlay text scroll behavior
     const overlayText = document.querySelector('.overlay-text');
     window.addEventListener('scroll', () => {
-      overlayText.classList.toggle('hidden', window.scrollY > 50);
+      if (window.scrollY > 50) {
+        overlayText.classList.add('hidden');
+      } else {
+        overlayText.classList.remove('hidden');
+      }
     });
   </script>
 
