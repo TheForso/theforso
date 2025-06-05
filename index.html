@@ -28,12 +28,12 @@
 
     .banner-top {
       height: 120px;
-      background-image: url('TopBanner_E.jpg');
+      background-image: url('TopBanner_D.jpg');
       background-size: cover;
       background-position: top center;
       display: flex;
       justify-content: flex-end;
-      align-items: flex-end; /* ALINEA EL MENU ABAJO */
+      align-items: flex-end;
       padding: 0 40px 10px 0;
     }
 
@@ -62,6 +62,7 @@
       position: relative;
       height: 100vh;
       overflow: hidden;
+      margin-top: -4px; /* Seamless transition */
     }
 
     .slideshow video {
@@ -132,19 +133,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Video slideshow -->
-  <div class="slideshow">
-    <video src="video1.mp4" autoplay muted loop class="active"></video>
-    <video src="video2.mp4" autoplay muted loop></video>
-    <video src="video3.mp4" autoplay muted loop></video>
-
-    <!-- Overlay text -->
-    <div class="overlay-text">
-      <h2>3D GRAPHICS · VFX · VIDEOGAME ART · CINEMATICS</h2>
-    </div>
-  </div>
-
   <!-- Header with banners -->
   <div class="banner">
     <div class="banner-top">
@@ -157,6 +145,18 @@
       </nav>
     </div>
     <div class="banner-bottom"></div>
+  </div>
+
+  <!-- Video slideshow -->
+  <div class="slideshow">
+    <video src="video1.mp4" autoplay muted loop class="active"></video>
+    <video src="video2.mp4" autoplay muted loop></video>
+    <video src="video3.mp4" autoplay muted loop></video>
+
+    <!-- Overlay text -->
+    <div class="overlay-text">
+      <h2>3D GRAPHICS · VFX · VIDEOGAME ART · CINEMATICS</h2>
+    </div>
   </div>
 
   <!-- Main content -->
@@ -178,17 +178,14 @@
   </main>
 
   <script>
-    // Slideshow logic
     const videos = document.querySelectorAll('.slideshow video');
     let current = 0;
-
     setInterval(() => {
       videos[current].classList.remove('active');
       current = (current + 1) % videos.length;
       videos[current].classList.add('active');
     }, 8000);
 
-    // Overlay text scroll behavior
     const overlayText = document.querySelector('.overlay-text');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -198,6 +195,5 @@
       }
     });
   </script>
-
 </body>
 </html>
