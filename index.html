@@ -11,14 +11,19 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       font-family: Arial, sans-serif;
       height: 100%;
       overflow-x: hidden;
+      background-color: #000;
+    }
+
+    body {
+      padding-top: 200px; /* Altura del header */
     }
 
     header {
-      position: absolute;
+      position: fixed;
       top: 0;
       width: 100%;
       background-image: url('TopBanner_D.jpg');
@@ -31,7 +36,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      z-index: 2;
+      z-index: 10;
     }
 
     header h1 {
@@ -53,6 +58,7 @@
 
     .slideshow {
       position: relative;
+      width: 100vw;
       height: 100vh;
       overflow: hidden;
     }
@@ -61,8 +67,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -95,7 +101,7 @@
 
     .overlay-text h2 {
       color: #edc447;
-      font-size: 3em;
+      font-size: clamp(1.5rem, 5vw, 3rem);
       font-weight: 600;
       line-height: 1.4;
     }
@@ -122,6 +128,32 @@
       line-height: 1.6;
       color: #333;
     }
+
+    /* Responsive Menu */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding-bottom: 10px;
+      }
+
+      .menu {
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .menu a {
+        font-size: 16px;
+      }
+
+      body {
+        padding-top: 250px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -134,18 +166,18 @@
     <div class="overlay-text">
       <h2>3D GRAPHICS · VFX · VIDEOGAME ART · CINEMATICS</h2>
     </div>
-
-    <header>
-      <h1>3D Art for Video Games</h1>
-      <nav>
-        <ul class="menu">
-          <li><a href="#who">Who We Are</a></li>
-          <li><a href="#what">What We Do</a></li>
-          <li><a href="#contact">Let's Talk</a></li>
-        </ul>
-      </nav>
-    </header>
   </div>
+
+  <header>
+    <h1>3D Art for Video Games</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="#who">Who We Are</a></li>
+        <li><a href="#what">What We Do</a></li>
+        <li><a href="#contact">Let's Talk</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main>
     <section id="who">
