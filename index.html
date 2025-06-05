@@ -16,19 +16,24 @@
       height: 100%;
       overflow-x: hidden;
       background-color: black;
+      padding-top: 160px; /* Igual a la altura del header */
     }
 
-    header {
-      position: relative;
-      width: 100%;
-      background-image: url('TopBanner_E.jpg');
-      background-size: cover;
-      background-position: center top;
-      height: 200px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 160px; /* Ajustá según cuánto gris quieras mostrar */
+  background-image: url('TopBanner_D.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end; /* baja el contenido a la base del gris */
+  justify-content: flex-end; /* alinea el menú a la derecha */
+  padding: 0 40px 30px; /* espacio inferior para dejar aire sobre la franja */
+  z-index: 10;
+}
 
     .menu-bar {
       position: relative;
