@@ -35,6 +35,7 @@
       justify-content: flex-end;
       align-items: flex-end;
       padding: 0 40px 10px 0;
+      position: relative;
     }
 
     .banner-bottom {
@@ -55,6 +56,14 @@
       text-decoration: none;
       font-weight: normal;
       font-size: 16px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      height: 50px;
+      z-index: 20;
     }
 
     /* VIDEO SLIDESHOW */
@@ -136,6 +145,9 @@
   <!-- Header with banners -->
   <div class="banner">
     <div class="banner-top">
+      <a href="index.html">
+        <img src="TheForso_n.jpg" alt="The Forso Logo" class="logo">
+      </a>
       <nav>
         <ul class="menu">
           <li><a href="#who">Who We Are</a></li>
