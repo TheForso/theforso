@@ -215,7 +215,22 @@
 
     <section id="contact">
       <h2>Let's Talk</h2>
-      <p>If you're interested in working together or have questions, feel free to reach out via our contact form (coming soon).</p>
+      <p>If you're interested in working together or have questions, feel free to reach out via the form below.</p>
+      <form action="https://formsubmit.co/your-email@example.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://tusitio.com/thankyou.html">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
     </section>
   </main>
 
